@@ -1,0 +1,158 @@
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 560;
+  color: var(--ink);
+}
+
+.prompt {
+  margin: 0 0 1.5rem;
+  white-space: pre-line;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.choices {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.choice,
+.choiceSelected {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  line-height: 1.45;
+  font: inherit;
+}
+
+.choice:hover {
+  border-color: var(--ink-soft);
+}
+
+.choiceSelected {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.fieldLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  max-width: 16rem;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.primary {
+  justify-self: start;
+  padding: 0.75rem 1.2rem;
+  border: none;
+  border-radius: 0.35rem;
+  background: var(--accent);
+  color: var(--paper);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.primary:hover {
+  filter: brightness(1.05);
+}
+
+.primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.results {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pass {
+  color: #1f6b3a;
+  font-weight: 650;
+  margin: 0;
+}
+
+.fail {
+  color: #9b2c2c;
+  font-weight: 650;
+  margin: 0;
+}
+
+.explanation {
+  margin: 0;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.streak {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
