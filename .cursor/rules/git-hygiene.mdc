@@ -1,0 +1,11 @@
+---
+description: Git/PR hygiene — no Cursor branding or cursor/ branch prefixes
+alwaysApply: true
+---
+
+# Git and pull request hygiene
+
+- Do not prefix branch names with `cursor/`. Use a short informative name only.
+- Do not add Cursor marketing or attribution to commits, PR titles, or PR bodies
+  (including footers like "Made with Cursor" or links to cursor.com).
+- Keep PR descriptions limited to summary and test plan content the user asked for.

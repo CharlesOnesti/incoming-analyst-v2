@@ -41,6 +41,6 @@ Fast conceptual drills covering:
 - Valuation (EV vs equity, UFCF, comps/DCF)
 - Accounting bridges (statements, NWC, D&A tax shield)
 
-MCQ or short numeric answers with immediate explanation. Difficulty unlocks deeper items (Hard includes all tiers).
+MCQ or short numeric answers with immediate explanation. Easy and Medium each use only their own tier; Hard draws from the full bank.
 
 Core logic: `src/lib/lbo/` (paper LBO) and `src/lib/technicals/` (drill bank).
