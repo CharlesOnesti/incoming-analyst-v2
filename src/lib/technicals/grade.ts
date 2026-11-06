@@ -2,19 +2,18 @@ import type { Difficulty } from '../lbo/types'
 import { TECHNICAL_QUESTIONS } from './bank'
 import type { TechnicalGrade, TechnicalQuestion } from './types'
 
-const DIFFICULTY_RANK: Record<Difficulty, number> = {
-  easy: 0,
-  medium: 1,
-  hard: 2,
-}
-
 export function questionsForDifficulty(
   difficulty: Difficulty,
 ): TechnicalQuestion[] {
-  const maxRank = DIFFICULTY_RANK[difficulty]
-  return TECHNICAL_QUESTIONS.filter(
-    (q) => DIFFICULTY_RANK[q.difficulty] <= maxRank,
-  )
+  // Easy / medium are isolated so a medium drill is not diluted by easy stems.
+  // Hard unlocks the full bank for breadth.
+  if (difficulty === 'easy') {
+    return TECHNICAL_QUESTIONS.filter((q) => q.difficulty === 'easy')
+  }
+  if (difficulty === 'medium') {
+    return TECHNICAL_QUESTIONS.filter((q) => q.difficulty === 'medium')
+  }
+  return TECHNICAL_QUESTIONS
 }
 
 export function pickQuestion(
