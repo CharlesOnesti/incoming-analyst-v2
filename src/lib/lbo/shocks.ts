@@ -73,6 +73,54 @@ export const SHOCKS: Shock[] = [
       debtPercent: clamp(inputs.debtPercent - 10, 20, 80),
     }),
   },
+  {
+    id: 'taxRateUp',
+    label: 'tax rate +5pp',
+    apply: (inputs) => ({
+      ...inputs,
+      taxRate: clamp(inputs.taxRate + 5, 10, 45),
+    }),
+  },
+  {
+    id: 'taxRateDown',
+    label: 'tax rate −5pp',
+    apply: (inputs) => ({
+      ...inputs,
+      taxRate: clamp(inputs.taxRate - 5, 10, 45),
+    }),
+  },
+  {
+    id: 'capexUp',
+    label: 'CapEx +5pp of revenue',
+    apply: (inputs) => ({
+      ...inputs,
+      capexPr: clamp(inputs.capexPr + 5, 0, 25),
+    }),
+  },
+  {
+    id: 'capexDown',
+    label: 'CapEx −5pp of revenue',
+    apply: (inputs) => ({
+      ...inputs,
+      capexPr: clamp(inputs.capexPr - 5, 0, 25),
+    }),
+  },
+  {
+    id: 'intRateUp',
+    label: 'interest rate +2pp',
+    apply: (inputs) => ({
+      ...inputs,
+      intRate: clamp(inputs.intRate + 2, 2, 20),
+    }),
+  },
+  {
+    id: 'intRateDown',
+    label: 'interest rate −2pp',
+    apply: (inputs) => ({
+      ...inputs,
+      intRate: clamp(inputs.intRate - 2, 2, 20),
+    }),
+  },
 ]
 
 const FOLLOW_UP_ASKS: Ask[] = [
@@ -128,6 +176,24 @@ export function buildFollowUpPrompt(
     case 'debtDown':
       lines.push(
         `The deal is funded with ${next.debtPercent}% debt (was ${baseInputs.debtPercent}%).`,
+      )
+      break
+    case 'taxRateUp':
+    case 'taxRateDown':
+      lines.push(
+        `The tax rate is ${next.taxRate}% (was ${baseInputs.taxRate}%).`,
+      )
+      break
+    case 'capexUp':
+    case 'capexDown':
+      lines.push(
+        `CapEx is ${next.capexPr}% of revenue and equals D&A (was ${baseInputs.capexPr}%).`,
+      )
+      break
+    case 'intRateUp':
+    case 'intRateDown':
+      lines.push(
+        `Debt interest rate is ${next.intRate}% (was ${baseInputs.intRate}%).`,
       )
       break
   }

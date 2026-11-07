@@ -110,6 +110,48 @@ const scrambledOrder: PromptBuilder = (inputs) => {
   return `Build the LBO with the following facts. CapEx equals ${capexPr}% of revenue and matches D&A. ${exitBit} Debt funds ${debtPercent}% of the deal at ${intRate}% interest. LTM revenue is $${ltmRev} million. Tax rate is ${taxRate}%. NWC sits at ${nwcPr}% of revenue each year. Entry multiple is ${entryMult}x LTM EBITDA. EBITDA margin is ${ebitdaMargin}% and stays constant. Revenue grows ${revGrowth}% annually.`
 }
 
+/** SaaS flavor — same LboInputs, ARR / NRR language woven into the stem. */
+const saasFlavor: PromptBuilder = (inputs) => {
+  const {
+    entryMult,
+    exitMult,
+    ltmRev,
+    ebitdaMargin,
+    debtPercent,
+    intRate,
+    revGrowth,
+    taxRate,
+    capexPr,
+    nwcPr,
+  } = inputs
+  const exitBit =
+    exitMult === entryMult
+      ? 'exit at the same EV/EBITDA multiple'
+      : `exit at ${exitMult}x EV/EBITDA`
+  return `Paper LBO — B2B SaaS target. LTM ARR is $${ltmRev} million (treat ARR as the revenue base in the model) with a ${ebitdaMargin}% EBITDA margin and net revenue retention supporting ~${revGrowth}% annual ARR growth. Underwrite entry at ${entryMult}x LTM EBITDA and ${exitBit}. Fund ${debtPercent}% with debt at ${intRate}% cash interest. Tax rate ${taxRate}%. Maintenance CapEx / capitalized software is ${capexPr}% of ARR and equals D&A. Net working capital (mostly deferred revenue / billings timing) is ${nwcPr}% of ARR each year. Margins stay flat.`
+}
+
+/** Retail flavor — same LboInputs, store count / SSS language woven into the stem. */
+const retailFlavor: PromptBuilder = (inputs) => {
+  const {
+    entryMult,
+    exitMult,
+    ltmRev,
+    ebitdaMargin,
+    debtPercent,
+    intRate,
+    revGrowth,
+    taxRate,
+    capexPr,
+    nwcPr,
+  } = inputs
+  const exitBit =
+    exitMult === entryMult
+      ? 'assume exit at entry multiple parity'
+      : `exit at ${exitMult}x LTM EBITDA`
+  return `Paper LBO — multi-store retail chain. LTM revenue is $${ltmRev} million across a mature store base, with EBITDA margin ${ebitdaMargin}%. Management guides mid-single to low-double digit top-line growth of ${revGrowth}% per year from comparable-store sales (SSS) and modest square footage adds. Bid at ${entryMult}x LTM EBITDA and ${exitBit}. Capital structure: ${debtPercent}% debt at ${intRate}% interest. Tax rate ${taxRate}%. Store maintenance CapEx is ${capexPr}% of revenue and equals D&A. Inventory-driven NWC is ${nwcPr}% of revenue each year. Hold margins constant.`
+}
+
 const STYLES: Array<{
   id: string
   build: PromptBuilder
@@ -120,6 +162,8 @@ const STYLES: Array<{
   { id: 'interviewer', build: interviewer, tiers: ['medium', 'hard'] },
   { id: 'denseMemo', build: denseMemo, tiers: ['hard'] },
   { id: 'scrambledOrder', build: scrambledOrder, tiers: ['hard'] },
+  { id: 'saasFlavor', build: saasFlavor, tiers: ['easy', 'medium', 'hard'] },
+  { id: 'retailFlavor', build: retailFlavor, tiers: ['easy', 'medium', 'hard'] },
 ]
 
 export function buildPrompt(
