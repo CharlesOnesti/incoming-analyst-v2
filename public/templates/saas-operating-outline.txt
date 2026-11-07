@@ -1,0 +1,24 @@
+SaaS Operating Outline
+======================
+
+1) ARR bridge
+   - Beginning ARR
+   - New + expansion − contraction − churn = ending ARR
+   - NRR / GDR / NDR
+
+2) Unit economics
+   - ACV / ASP
+   - CAC and payback
+   - LTV (or contribution after variable cost)
+   - Magic number / burn multiple
+
+3) Go-to-market
+   - Pipeline coverage
+   - Win rate and cycle time
+   - Capacity (AEs, SEs) and ramp
+
+4) Operating plan checkpoints
+   - Gross margin and hosting COGS
+   - Implementation backlog
+   - Support tickets / NPS
+   - Rule of 40 path

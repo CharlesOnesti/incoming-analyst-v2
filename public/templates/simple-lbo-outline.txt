@@ -1,0 +1,26 @@
+Simple Paper LBO Outline
+========================
+
+1) Entry
+   - Entry EBITDA / revenue
+   - Entry multiple → enterprise value
+   - Net debt / cash → equity check
+   - Sources & uses
+
+2) Debt
+   - Opening debt balances by tranche
+   - Interest (cash / PIK)
+   - Mandatory amortization
+   - Optional prepay from excess FCF
+
+3) Operations (hold period)
+   - Revenue growth by year
+   - EBITDA margin path
+   - D&A, capex, NWC
+   - Free cash flow bridge
+
+4) Exit
+   - Exit EBITDA × exit multiple
+   - Net debt at exit → equity value
+   - MOIC and IRR
+   - Sensitivity: ±1 turn multiple, ±100 bps margin
