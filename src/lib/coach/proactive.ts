@@ -43,7 +43,7 @@ export function buildDailyPlan(asOf = new Date()): DailyAction[] {
       id: `tracker-${entry.id}`,
       title: `Overdue: ${entry.nextAction}`,
       reason: `${entry.firm} · was due ${entry.dueDate}`,
-      href: '/tracker',
+      href: '/outreach',
       source: 'tracker',
       priority: actions.length,
     })

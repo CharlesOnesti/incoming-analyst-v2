@@ -97,3 +97,12 @@
 .start:hover {
   filter: brightness(1.05);
 }
+
+.groupHeading {
+  margin: 0 0 0.75rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
