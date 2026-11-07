@@ -2,6 +2,7 @@ import { useMemo, useState, type FormEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Timer } from '../components/Timer'
 import type { Difficulty } from '../lib/lbo'
+import { addSession } from '../lib/profile'
 import {
   gradeQuestion,
   pickQuestion,
@@ -70,6 +71,16 @@ export function Technicals() {
     setSeenIds((ids) =>
       ids.includes(question.id) ? ids : [...ids, question.id],
     )
+    addSession({
+      id: `tech-${Date.now()}`,
+      mode: 'technicals',
+      dimension: 'technicals',
+      difficulty,
+      score: result.passed ? 1 : 0,
+      total: 1,
+      notes: question.id,
+      createdAt: new Date().toISOString(),
+    })
   }
 
   const nextQuestion = () => {

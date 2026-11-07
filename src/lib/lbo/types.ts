@@ -82,6 +82,12 @@ export type ShockId =
   | 'marginDown'
   | 'debtUp'
   | 'debtDown'
+  | 'taxRateUp'
+  | 'taxRateDown'
+  | 'capexUp'
+  | 'capexDown'
+  | 'intRateUp'
+  | 'intRateDown'
 
 export type Shock = {
   id: ShockId

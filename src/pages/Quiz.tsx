@@ -18,6 +18,7 @@ import {
   type LboSolution,
   type ShockId,
 } from '../lib/lbo'
+import { addSession } from '../lib/profile'
 import styles from './Quiz.module.css'
 
 const DIFFICULTY_LABELS: Record<Difficulty, string> = {
@@ -196,9 +197,20 @@ export function Quiz() {
       solution,
       grade: result,
     }
-    setRoundHistory((prev) => [...prev, record])
+    const nextHistory = [...roundHistory, record]
+    setRoundHistory(nextHistory)
 
     if (!isBaseRound && followUpsDone >= MAX_FOLLOW_UPS) {
+      const score = nextHistory.filter((r) => r.grade.passed).length
+      addSession({
+        id: `lbo-${Date.now()}`,
+        mode: 'lbo',
+        dimension: 'lbo',
+        difficulty,
+        score,
+        total: nextHistory.length,
+        createdAt: new Date().toISOString(),
+      })
       setPhase('complete')
       return
     }
@@ -221,6 +233,18 @@ export function Quiz() {
   }
 
   const finishWithoutMore = () => {
+    const score = roundHistory.filter((r) => r.grade.passed).length
+    if (roundHistory.length > 0) {
+      addSession({
+        id: `lbo-${Date.now()}`,
+        mode: 'lbo',
+        dimension: 'lbo',
+        difficulty,
+        score,
+        total: roundHistory.length,
+        createdAt: new Date().toISOString(),
+      })
+    }
     setPhase('complete')
   }
 
